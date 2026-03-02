@@ -1,0 +1,231 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{minted}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+% Define colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Listing style configuration
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Highway Ramp Metering Reinforcement Learning Project}
+\author{Project Report}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Required Packages}
+The project requires the following dependencies:
+
+\begin{tcolorbox}[title=Core Dependencies]
+\begin{itemize}
+    \item \textbf{torch} $\geq$ 1.9.0: Deep Learning framework for DQN
+    \item \textbf{numpy} $\geq$ 1.19.5: Numerical computations
+    \item \textbf{matplotlib} $\geq$ 3.3.4: Plotting and visualization
+    \item \textbf{sumo} $\geq$ 1.8.0: Traffic simulation environment
+    \item \textbf{pickle}: Model saving/loading (built-in)
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Optional Dependencies]
+\begin{itemize}
+    \item \textbf{tqdm}: Progress bars for training
+\end{itemize}
+\end{tcolorbox}
+
+\section{Project Structure}
+
+\subsection{Main Files}
+\begin{lstlisting}[language=bash]
+RL-Project/
+├── train_and_evaluate.py    # Main training script
+├── run_trained_model.py     # Script to run trained models
+├── requirements.txt         # Package dependencies
+└── README.md               # Project documentation
+\end{lstlisting}
+
+\subsection{Code Organization}
+\begin{lstlisting}[language=bash]
+code/
+├── training/
+│   ├── qlearning.py        # Q-Learning implementation
+│   └── dqn.py             # Deep Q-Network implementation
+├── utils/
+│   └── env.py             # SUMO environment wrapper
+└── __init__.py
+\end{lstlisting}
+
+\subsection{Configuration}
+\begin{lstlisting}[language=bash]
+config/
+├── highway.net.xml         # Highway network definition
+└── highway.rou.xml         # Traffic route definition
+\end{lstlisting}
+
+\subsection{Saved Models and Results}
+\begin{lstlisting}[language=bash]
+./
+├── dqn_model.pth          # Trained DQN model weights
+├── qlearning_table.pkl    # Q-Learning table
+└── training_results.png   # Training performance plots
+\end{lstlisting}
+
+\section{Execution Instructions}
+
+\subsection{Training New Models}
+To train both Q-Learning and DQN models:
+\begin{lstlisting}[language=bash]
+python train_and_evaluate.py
+\end{lstlisting}
+
+Training parameters can be modified in the script:
+\begin{itemize}
+    \item \texttt{EPISODES}: Number of training episodes
+    \item \texttt{MAX\_STEPS}: Maximum steps per episode
+\end{itemize}
+
+\subsection{Running Trained Models}
+To run the trained models:
+\begin{lstlisting}[language=bash]
+# Run DQN model
+python run_trained_model.py --model dqn
+
+# Run Q-Learning model
+python run_trained_model.py --model qlearning
+\end{lstlisting}
+
+Optional parameters:
+\begin{itemize}
+    \item \texttt{--simulation\_time}: Duration of simulation (default: 3600 steps)
+    \item \texttt{--delay}: Visualization delay (default: 0.1s)
+\end{itemize}
+
+\section{Evaluation and Results}
+
+\subsection{Training Metrics}
+The \texttt{training\_results.png} plot shows:
+\begin{itemize}
+    \item X-axis: Training episodes
+    \item Y-axis: Total reward per episode
+    \item Blue line: Q-Learning performance
+    \item Orange line: DQN performance
+\end{itemize}
+
+\subsection{Performance Interpretation}
+
+\subsubsection{Q-Learning Performance}
+\begin{tcolorbox}[title=Q-Learning Analysis]
+Advantages:
+\begin{itemize}
+    \item Simpler implementation
+    \item More stable learning
+    \item Better for discrete state spaces
+\end{itemize}
+Limitations:
+\begin{itemize}
+    \item Limited scalability
+    \item Less precise in continuous spaces
+\end{itemize}
+\end{tcolorbox}
+
+\subsubsection{DQN Performance}
+\begin{tcolorbox}[title=DQN Analysis]
+Advantages:
+\begin{itemize}
+    \item Better generalization
+    \item Handles continuous state spaces
+    \item More sophisticated feature learning
+\end{itemize}
+Limitations:
+\begin{itemize}
+    \item Longer training time
+    \item More hyperparameter tuning needed
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Key Metrics During Execution}
+The simulation provides real-time metrics:
+\begin{itemize}
+    \item Average vehicle speed (km/h)
+    \item Waiting time at ramps (seconds)
+    \item Number of vehicles served
+    \item Instantaneous rewards
+\end{itemize}
+
+\subsection{Visualization}
+During model execution (\texttt{run\_trained\_model.py}):
+\begin{itemize}
+    \item SUMO-GUI shows traffic simulation
+    \item Terminal displays real-time metrics
+    \item Traffic light states (Red/Green) indicate ramp metering decisions
+\end{itemize}
+
+\section{Model Parameters}
+
+\subsection{Q-Learning}
+\begin{tcolorbox}[title=Q-Learning Parameters]
+\begin{itemize}
+    \item Learning rate ($\alpha$): 0.1
+    \item Discount factor ($\gamma$): 0.95
+    \item Exploration rate ($\epsilon$): 0.1
+    \item State discretization: 6 dimensions
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{DQN}
+\begin{tcolorbox}[title=DQN Parameters]
+\begin{itemize}
+    \item Neural Network: 3 layers (6$\rightarrow$64$\rightarrow$64$\rightarrow$2)
+    \item Learning rate: 0.001
+    \item Batch size: 64
+    \item Memory size: 10000
+    \item Target network update: Every 100 steps
+    \item Exploration decay: 0.995
+\end{itemize}
+\end{tcolorbox}
+
+\section{Future Improvements}
+\begin{enumerate}
+    \item Implement Prioritized Experience Replay
+    \item Add A3C (Asynchronous Advantage Actor-Critic)
+    \item Include more traffic scenarios
+    \item Optimize hyperparameters
+    \item Add multi-ramp coordination
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <!-- 车辆类型 -->
+    <vType id="passenger" accel="2.0" decel="4.5" sigma="0.3" length="5.0" 
+           minGap="2.0" maxSpeed="33.33" speedFactor="1.0"
+           lcStrategic="0.5" lcCooperative="0.5" lcSpeedGain="1.0" lcKeepRight="0.8"/>
+    
+   <!-- 主线: 早高峰 3000 veh/h -->
+    <flow id="main_peak1" type="passenger" 
+          begin="0" end="3600" probability="0.93"
+          departLane="random" departSpeed="random">
+        <route edges="main_0 main_1 main_2 main_3 main_4 main_5 main_6"/>
+    </flow>
+    
+    <!-- Ramp1: 早高峰 650 veh/h -->
+    <flow id="ramp1_peak1" type="passenger"
+          begin="0" end="3600" probability="0.3"
+          departLane="0" departSpeed="random">
+        <route edges="ramp1_0 ramp1_1 main_1 main_2 main_3 main_4 main_5 main_6"/>
+    </flow>
+    
+    <!-- Ramp2: 早高峰 550 veh/h -->
+    <flow id="ramp2_peak1" type="passenger"
+          begin="0" end="3600" probability="0.4"
+          departLane="0" departSpeed="random">
+        <route edges="ramp2_0 ramp2_1 main_3 main_4 main_5 main_6"/>
+    </flow>
+    
+    <!-- Ramp3: 早高峰 450 veh/h -->
+    <flow id="ramp3_peak1" type="passenger"
+          begin="0" end="3600" probability="0.4"
+          departLane="0" departSpeed="random">
+        <route edges="ramp3_0 ramp3_1 main_5 main_6"/>
+    </flow>
+    
+</routes>

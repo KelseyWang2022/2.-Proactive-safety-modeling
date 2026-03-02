@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 多Ramp网络 - 每个合流区都有独立的短辅助车道 -->
+<net version="1.16" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="133.00,250.00" convBoundary="0.00,0.00,2500.00,250.00" origBoundary="-133.00,-250.00,2367.00,0.00" projParameter="!"/>
+
+    <!-- 道路类型 -->
+    <type id="motorway" numLanes="2" speed="30.56" allow="passenger"/>
+    <type id="onramp" numLanes="1" speed="22.22" allow="passenger"/>
+
+    <!-- ==================== Internal Edges ==================== -->
+
+    <!-- Merge1 -->
+    <edge id=":merge1_0" function="internal">
+        <lane id=":merge1_0_0" index="0" allow="passenger" speed="9.18" length="3.80" shape="520.68,241.04 521.66,241.58 522.38,241.87 523.15,241.98 524.27,242.00"/>
+    </edge>
+    <edge id=":merge1_1" function="internal">
+        <lane id=":merge1_1_0" index="0" allow="passenger" speed="30.56" length="3.86" shape="520.42,245.20 524.27,245.20"/>
+        <lane id=":merge1_1_1" index="1" allow="passenger" speed="30.56" length="3.86" shape="520.42,248.40 524.27,248.40"/>
+    </edge>
+
+    <!-- Aux_end1 (辅助车道结束1) -->
+    <edge id=":aux_end1_0" function="internal">
+        <lane id=":aux_end1_0_0" index="0" allow="passenger" speed="30.56" length="8.00" shape="729.00,245.20 737.00,245.20"/>
+        <lane id=":aux_end1_0_1" index="1" allow="passenger" speed="30.56" length="8.00" shape="729.00,248.40 737.00,248.40"/>
+    </edge>
+
+    <!-- Merge2 -->
+    <edge id=":merge2_0" function="internal">
+        <lane id=":merge2_0_0" index="0" allow="passenger" speed="9.18" length="3.80" shape="1020.68,241.04 1021.66,241.58 1022.38,241.87 1023.15,241.98 1024.27,242.00"/>
+    </edge>
+    <edge id=":merge2_1" function="internal">
+        <lane id=":merge2_1_0" index="0" allow="passenger" speed="30.56" length="3.86" shape="1020.42,245.20 1024.27,245.20"/>
+        <lane id=":merge2_1_1" index="1" allow="passenger" speed="30.56" length="3.86" shape="1020.42,248.40 1024.27,248.40"/>
+    </edge>
+
+    <!-- Aux_end2 (辅助车道结束2) -->
+    <edge id=":aux_end2_0" function="internal">
+        <lane id=":aux_end2_0_0" index="0" allow="passenger" speed="30.56" length="8.00" shape="1229.00,245.20 1237.00,245.20"/>
+        <lane id=":aux_end2_0_1" index="1" allow="passenger" speed="30.56" length="8.00" shape="1229.00,248.40 1237.00,248.40"/>
+    </edge>
+
+    <!-- Merge3 -->
+    <edge id=":merge3_0" function="internal">
+        <lane id=":merge3_0_0" index="0" allow="passenger" speed="9.18" length="3.80" shape="1520.68,241.04 1521.66,241.58 1522.38,241.87 1523.15,241.98 1524.27,242.00"/>
+    </edge>
+    <edge id=":merge3_1" function="internal">
+        <lane id=":merge3_1_0" index="0" allow="passenger" speed="30.56" length="3.86" shape="1520.42,245.20 1524.27,245.20"/>
+        <lane id=":merge3_1_1" index="1" allow="passenger" speed="30.56" length="3.86" shape="1520.42,248.40 1524.27,248.40"/>
+    </edge>
+
+    <!-- Aux_end3 (辅助车道结束3) -->
+    <edge id=":aux_end3_0" function="internal">
+        <lane id=":aux_end3_0_0" index="0" allow="passenger" speed="30.56" length="8.00" shape="1729.00,245.20 1737.00,245.20"/>
+        <lane id=":aux_end3_0_1" index="1" allow="passenger" speed="30.56" length="8.00" shape="1729.00,248.40 1737.00,248.40"/>
+    </edge>
+
+    <!-- Meters -->
+    <edge id=":meter1_0" function="internal">
+        <lane id=":meter1_0_0" index="0" allow="passenger" speed="22.22" length="0.10" shape="386.60,163.61 386.60,163.61"/>
+    </edge>
+    <edge id=":meter2_0" function="internal">
+        <lane id=":meter2_0_0" index="0" allow="passenger" speed="22.22" length="0.10" shape="886.60,163.61 886.60,163.61"/>
+    </edge>
+    <edge id=":meter3_0" function="internal">
+        <lane id=":meter3_0_0" index="0" allow="passenger" speed="22.22" length="0.10" shape="1386.60,163.61 1386.60,163.61"/>
+    </edge>
+
+    <!-- ==================== 主线边 ==================== -->
+
+    <!-- main_0: 上游 → merge1 (2车道) -->
+    <edge id="main_0" from="ml_start" to="merge1" priority="-1" type="motorway">
+        <lane id="main_0_0" index="0" allow="passenger" speed="30.56" length="387.42" shape="133.00,245.20 520.42,245.20"/>
+        <lane id="main_0_1" index="1" allow="passenger" speed="30.56" length="387.42" shape="133.00,248.40 520.42,248.40"/>
+    </edge>
+
+    <!-- main_1: merge1 → aux_end1 (3车道,辅助车道,205m) -->
+    <edge id="main_1" from="merge1" to="aux_end1" priority="-1" type="motorway">
+        <lane id="main_1_0" index="0" allow="passenger" speed="30.56" length="204.73" acceleration="1" shape="524.27,242.00 729.00,242.00"/>
+        <lane id="main_1_1" index="1" allow="passenger" speed="30.56" length="204.73" shape="524.27,245.20 729.00,245.20"/>
+        <lane id="main_1_2" index="2" allow="passenger" speed="30.56" length="204.73" shape="524.27,248.40 729.00,248.40"/>
+    </edge>
+
+    <!-- main_2: aux_end1 → merge2 (2车道) -->
+    <edge id="main_2" from="aux_end1" to="merge2" priority="-1" type="motorway">
+        <lane id="main_2_0" index="0" allow="passenger" speed="30.56" length="283.00" shape="737.00,245.20 1020.42,245.20"/>
+        <lane id="main_2_1" index="1" allow="passenger" speed="30.56" length="283.00" shape="737.00,248.40 1020.42,248.40"/>
+    </edge>
+
+    <!-- main_3: merge2 → aux_end2 (3车道,辅助车道,205m) -->
+    <edge id="main_3" from="merge2" to="aux_end2" priority="-1" type="motorway">
+        <lane id="main_3_0" index="0" allow="passenger" speed="30.56" length="204.73" acceleration="1" shape="1024.27,242.00 1229.00,242.00"/>
+        <lane id="main_3_1" index="1" allow="passenger" speed="30.56" length="204.73" shape="1024.27,245.20 1229.00,245.20"/>
+        <lane id="main_3_2" index="2" allow="passenger" speed="30.56" length="204.73" shape="1024.27,248.40 1229.00,248.40"/>
+    </edge>
+
+    <!-- main_4: aux_end2 → merge3 (2车道) -->
+    <edge id="main_4" from="aux_end2" to="merge3" priority="-1" type="motorway">
+        <lane id="main_4_0" index="0" allow="passenger" speed="30.56" length="283.00" shape="1237.00,245.20 1520.42,245.20"/>
+        <lane id="main_4_1" index="1" allow="passenger" speed="30.56" length="283.00" shape="1237.00,248.40 1520.42,248.40"/>
+    </edge>
+
+    <!-- main_5: merge3 → aux_end3 (3车道,辅助车道,205m) -->
+    <edge id="main_5" from="merge3" to="aux_end3" priority="-1" type="motorway">
+        <lane id="main_5_0" index="0" allow="passenger" speed="30.56" length="204.73" acceleration="1" shape="1524.27,242.00 1729.00,242.00"/>
+        <lane id="main_5_1" index="1" allow="passenger" speed="30.56" length="204.73" shape="1524.27,245.20 1729.00,245.20"/>
+        <lane id="main_5_2" index="2" allow="passenger" speed="30.56" length="204.73" shape="1524.27,248.40 1729.00,248.40"/>
+    </edge>
+
+    <!-- main_6: aux_end3 → 下游 (2车道) -->
+    <edge id="main_6" from="aux_end3" to="ml_end" priority="-1" type="motorway">
+        <lane id="main_6_0" index="0" allow="passenger" speed="30.56" length="763.00" shape="1737.00,245.20 2500.00,245.20"/>
+        <lane id="main_6_1" index="1" allow="passenger" speed="30.56" length="763.00" shape="1737.00,248.40 2500.00,248.40"/>
+    </edge>
+
+    <!-- ==================== Ramp1 ==================== -->
+
+    <edge id="ramp1_0" from="ramp1_start" to="meter1" priority="-1" type="onramp">
+        <lane id="ramp1_0_0" index="0" allow="passenger" speed="22.22" length="330.01" shape="100.80,-1.39 386.60,163.61"/>
+    </edge>
+
+    <edge id="ramp1_1" from="meter1" to="merge1" priority="-1" type="onramp">
+        <lane id="ramp1_1_0" index="0" allow="passenger" speed="22.22" length="154.82" shape="386.60,163.61 520.68,241.04"/>
+    </edge>
+
+    <!-- ==================== Ramp2 ==================== -->
+
+    <edge id="ramp2_0" from="ramp2_start" to="meter2" priority="-1" type="onramp">
+        <lane id="ramp2_0_0" index="0" allow="passenger" speed="22.22" length="330.01" shape="600.80,-1.39 886.60,163.61"/>
+    </edge>
+
+    <edge id="ramp2_1" from="meter2" to="merge2" priority="-1" type="onramp">
+        <lane id="ramp2_1_0" index="0" allow="passenger" speed="22.22" length="154.82" shape="886.60,163.61 1020.68,241.04"/>
+    </edge>
+
+    <!-- ==================== Ramp3 ==================== -->
+
+    <edge id="ramp3_0" from="ramp3_start" to="meter3" priority="-1" type="onramp">
+        <lane id="ramp3_0_0" index="0" allow="passenger" speed="22.22" length="330.01" shape="1100.80,-1.39 1386.60,163.61"/>
+    </edge>
+
+    <edge id="ramp3_1" from="meter3" to="merge3" priority="-1" type="onramp">
+        <lane id="ramp3_1_0" index="0" allow="passenger" speed="22.22" length="154.82" shape="1386.60,163.61 1520.68,241.04"/>
+    </edge>
+
+    <!-- ==================== 交通信号灯 ==================== -->
+
+    <tlLogic id="meter1" type="static" programID="0" offset="0">
+        <phase duration="80" state="G"/>
+        <phase duration="5"  state="y"/>
+        <phase duration="5"  state="r"/>
+    </tlLogic>
+
+    <tlLogic id="meter2" type="static" programID="0" offset="0">
+        <phase duration="80" state="G"/>
+        <phase duration="5"  state="y"/>
+        <phase duration="5"  state="r"/>
+    </tlLogic>
+
+    <tlLogic id="meter3" type="static" programID="0" offset="0">
+        <phase duration="80" state="G"/>
+        <phase duration="5"  state="y"/>
+        <phase duration="5"  state="r"/>
+    </tlLogic>
+
+    <!-- ==================== Junction定义 ==================== -->
+
+    <junction id="ml_start" type="dead_end" x="133.00" y="250.00" incLanes="" intLanes="" shape="133.00,250.00 133.00,243.60"/>
+
+    <junction id="merge1" type="priority" x="520.00" y="250.00" incLanes="ramp1_1_0 main_0_0 main_0_1" intLanes=":merge1_0_0 :merge1_1_0 :merge1_1_1" shape="524.27,250.00 524.27,240.40 523.18,240.37 522.80,240.30 522.44,240.17 522.02,239.96 521.48,239.65 519.88,242.42 520.84,243.08 521.03,243.31 521.02,243.47 520.82,243.57 520.42,243.60 520.42,250.00">
+        <request index="0" response="000" foes="000" cont="0"/>
+        <request index="1" response="000" foes="000" cont="0"/>
+        <request index="2" response="000" foes="000" cont="0"/>
+    </junction>
+
+    <junction id="aux_end1" type="priority" x="733.00" y="250.00" incLanes="main_1_0 main_1_1 main_1_2" intLanes=":aux_end1_0_0 :aux_end1_0_1" shape="737.00,250.00 737.00,243.60 733.97,242.77 732.03,241.23 730.79,240.64 729.00,240.40 729.00,250.00">
+        <request index="0" response="00" foes="00" cont="0"/>
+        <request index="1" response="00" foes="00" cont="0"/>
+    </junction>
+
+    <junction id="merge2" type="priority" x="1020.00" y="250.00" incLanes="ramp2_1_0 main_2_0 main_2_1" intLanes=":merge2_0_0 :merge2_1_0 :merge2_1_1" shape="1024.27,250.00 1024.27,240.40 1023.18,240.37 1022.80,240.30 1022.44,240.17 1022.02,239.96 1021.48,239.65 1019.88,242.42 1020.84,243.08 1021.03,243.31 1021.02,243.47 1020.82,243.57 1020.42,243.60 1020.42,250.00">
+        <request index="0" response="000" foes="000" cont="0"/>
+        <request index="1" response="000" foes="000" cont="0"/>
+        <request index="2" response="000" foes="000" cont="0"/>
+    </junction>
+
+    <junction id="aux_end2" type="priority" x="1233.00" y="250.00" incLanes="main_3_0 main_3_1 main_3_2" intLanes=":aux_end2_0_0 :aux_end2_0_1" shape="1237.00,250.00 1237.00,243.60 1233.97,242.77 1232.03,241.23 1230.79,240.64 1229.00,240.40 1229.00,250.00">
+        <request index="0" response="00" foes="00" cont="0"/>
+        <request index="1" response="00" foes="00" cont="0"/>
+    </junction>
+
+    <junction id="merge3" type="priority" x="1520.00" y="250.00" incLanes="ramp3_1_0 main_4_0 main_4_1" intLanes=":merge3_0_0 :merge3_1_0 :merge3_1_1" shape="1524.27,250.00 1524.27,240.40 1523.18,240.37 1522.80,240.30 1522.44,240.17 1522.02,239.96 1521.48,239.65 1519.88,242.42 1520.84,243.08 1521.03,243.31 1521.02,243.47 1520.82,243.57 1520.42,243.60 1520.42,250.00">
+        <request index="0" response="000" foes="000" cont="0"/>
+        <request index="1" response="000" foes="000" cont="0"/>
+        <request index="2" response="000" foes="000" cont="0"/>
+    </junction>
+
+    <junction id="aux_end3" type="priority" x="1733.00" y="250.00" incLanes="main_5_0 main_5_1 main_5_2" intLanes=":aux_end3_0_0 :aux_end3_0_1" shape="1737.00,250.00 1737.00,243.60 1733.97,242.77 1732.03,241.23 1730.79,240.64 1729.00,240.40 1729.00,250.00">
+        <request index="0" response="00" foes="00" cont="0"/>
+        <request index="1" response="00" foes="00" cont="0"/>
+    </junction>
+
+    <junction id="ml_end" type="dead_end" x="2500.00" y="250.00" incLanes="main_6_0 main_6_1" intLanes="" shape="2500.00,243.60 2500.00,250.00"/>
+
+    <junction id="ramp1_start" type="dead_end" x="100.00" y="0.00" incLanes="" intLanes="" shape="100.00,-0.00 101.60,-2.77"/>
+    <junction id="ramp2_start" type="dead_end" x="600.00" y="0.00" incLanes="" intLanes="" shape="600.00,-0.00 601.60,-2.77"/>
+    <junction id="ramp3_start" type="dead_end" x="1100.00" y="0.00" incLanes="" intLanes="" shape="1100.00,-0.00 1101.60,-2.77"/>
+
+    <junction id="meter1" type="traffic_light" x="385.80" y="165.00" incLanes="ramp1_0_0" intLanes=":meter1_0_0" shape="385.80,165.00 387.40,162.23 385.80,165.00">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+
+    <junction id="meter2" type="traffic_light" x="885.80" y="165.00" incLanes="ramp2_0_0" intLanes=":meter2_0_0" shape="885.80,165.00 887.40,162.23 885.80,165.00">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+
+    <junction id="meter3" type="traffic_light" x="1385.80" y="165.00" incLanes="ramp3_0_0" intLanes=":meter3_0_0" shape="1385.80,165.00 1387.40,162.23 1385.80,165.00">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+
+    <!-- ==================== 连接定义 ==================== -->
+
+    <!-- 主线连接 -->
+    <connection from="main_0" to="main_1" fromLane="0" toLane="1" via=":merge1_1_0" dir="s" state="M"/>
+    <connection from="main_0" to="main_1" fromLane="1" toLane="2" via=":merge1_1_1" dir="s" state="M"/>
+
+    <connection from="main_1" to="main_2" fromLane="1" toLane="0" via=":aux_end1_0_0" dir="s" state="M"/>
+    <connection from="main_1" to="main_2" fromLane="2" toLane="1" via=":aux_end1_0_1" dir="s" state="M"/>
+
+    <connection from="main_2" to="main_3" fromLane="0" toLane="1" via=":merge2_1_0" dir="s" state="M"/>
+    <connection from="main_2" to="main_3" fromLane="1" toLane="2" via=":merge2_1_1" dir="s" state="M"/>
+
+    <connection from="main_3" to="main_4" fromLane="1" toLane="0" via=":aux_end2_0_0" dir="s" state="M"/>
+    <connection from="main_3" to="main_4" fromLane="2" toLane="1" via=":aux_end2_0_1" dir="s" state="M"/>
+
+    <connection from="main_4" to="main_5" fromLane="0" toLane="1" via=":merge3_1_0" dir="s" state="M"/>
+    <connection from="main_4" to="main_5" fromLane="1" toLane="2" via=":merge3_1_1" dir="s" state="M"/>
+
+    <connection from="main_5" to="main_6" fromLane="1" toLane="0" via=":aux_end3_0_0" dir="s" state="M"/>
+    <connection from="main_5" to="main_6" fromLane="2" toLane="1" via=":aux_end3_0_1" dir="s" state="M"/>
+
+    <!-- Ramp连接 -->
+    <connection from="ramp1_0" to="ramp1_1" fromLane="0" toLane="0" via=":meter1_0_0" tl="meter1" linkIndex="0" dir="s" state="O"/>
+    <connection from="ramp1_1" to="main_1" fromLane="0" toLane="0" via=":merge1_0_0" dir="s" state="M"/>
+
+    <connection from="ramp2_0" to="ramp2_1" fromLane="0" toLane="0" via=":meter2_0_0" tl="meter2" linkIndex="0" dir="s" state="O"/>
+    <connection from="ramp2_1" to="main_3" fromLane="0" toLane="0" via=":merge2_0_0" dir="s" state="M"/>
+
+    <connection from="ramp3_0" to="ramp3_1" fromLane="0" toLane="0" via=":meter3_0_0" tl="meter3" linkIndex="0" dir="s" state="O"/>
+    <connection from="ramp3_1" to="main_5" fromLane="0" toLane="0" via=":merge3_0_0" dir="s" state="M"/>
+
+    <!-- Internal连接 -->
+    <connection from=":merge1_0" to="main_1" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":merge1_1" to="main_1" fromLane="0" toLane="1" dir="s" state="M"/>
+    <connection from=":merge1_1" to="main_1" fromLane="1" toLane="2" dir="s" state="M"/>
+
+    <connection from=":aux_end1_0" to="main_2" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":aux_end1_0" to="main_2" fromLane="1" toLane="1" dir="s" state="M"/>
+
+    <connection from=":merge2_0" to="main_3" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":merge2_1" to="main_3" fromLane="0" toLane="1" dir="s" state="M"/>
+    <connection from=":merge2_1" to="main_3" fromLane="1" toLane="2" dir="s" state="M"/>
+
+    <connection from=":aux_end2_0" to="main_4" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":aux_end2_0" to="main_4" fromLane="1" toLane="1" dir="s" state="M"/>
+
+    <connection from=":merge3_0" to="main_5" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":merge3_1" to="main_5" fromLane="0" toLane="1" dir="s" state="M"/>
+    <connection from=":merge3_1" to="main_5" fromLane="1" toLane="2" dir="s" state="M"/>
+
+    <connection from=":aux_end3_0" to="main_6" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":aux_end3_0" to="main_6" fromLane="1" toLane="1" dir="s" state="M"/>
+
+    <connection from=":meter1_0" to="ramp1_1" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":meter2_0" to="ramp2_1" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":meter3_0" to="ramp3_1" fromLane="0" toLane="0" dir="s" state="M"/>
+
+</net>

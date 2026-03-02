@@ -1,0 +1,111 @@
+{
+  "policy": "fixed",
+  "n_episodes": 5,
+  "results": {
+    "avg_mainline_speed": {
+      "mean": 12.459521241967364,
+      "std": 0.31515550780778673
+    },
+    "avg_throughput": {
+      "mean": 2552.2907789873125,
+      "std": 27.07833511081798
+    },
+    "total_reward": {
+      "mean": 184.10131877675258,
+      "std": 4.674368770225766
+    },
+    "avg_ramp1_queue": {
+      "mean": 3.0866666666666664,
+      "std": 0.6350741183534951
+    },
+    "avg_ramp2_queue": {
+      "mean": 0.778888888888889,
+      "std": 0.27129433699204003
+    },
+    "avg_ramp3_queue": {
+      "mean": 0.42777777777777776,
+      "std": 0.02681670752477149
+    },
+    "total_delay": {
+      "mean": 475862.6,
+      "std": 68958.56567417858
+    }
+  },
+  "summaries": [
+    {
+      "total_reward": 183.82797572469673,
+      "avg_reward": 0.5106332659019354,
+      "avg_mainline_speed": 12.558654840461122,
+      "avg_throughput": 2590.001718260889,
+      "avg_ramp1_queue": 2.4972222222222222,
+      "avg_ramp1_rate": 600.0000059604645,
+      "avg_ramp2_queue": 0.4166666666666667,
+      "avg_ramp2_rate": 600.0000059604645,
+      "avg_ramp3_queue": 0.4666666666666667,
+      "avg_ramp3_rate": 600.0000059604645,
+      "total_delay": 383766.0,
+      "episode_steps": 360,
+      "episode_number": 1
+    },
+    {
+      "total_reward": 175.20071774265472,
+      "avg_reward": 0.4866686603962631,
+      "avg_mainline_speed": 11.859730158402984,
+      "avg_throughput": 2507.7180161962724,
+      "avg_ramp1_queue": 4.183333333333334,
+      "avg_ramp1_rate": 600.0000059604645,
+      "avg_ramp2_queue": 1.1527777777777777,
+      "avg_ramp2_rate": 600.0000059604645,
+      "avg_ramp3_queue": 0.4527777777777778,
+      "avg_ramp3_rate": 600.0000059604645,
+      "total_delay": 590964.0,
+      "episode_steps": 360,
+      "episode_number": 2
+    },
+    {
+      "total_reward": 187.93422644975627,
+      "avg_reward": 0.5220395179159897,
+      "avg_mainline_speed": 12.667546720649398,
+      "avg_throughput": 2543.3770010083426,
+      "avg_ramp1_queue": 3.361111111111111,
+      "avg_ramp1_rate": 600.0000059604645,
+      "avg_ramp2_queue": 1.0222222222222221,
+      "avg_ramp2_rate": 600.0000059604645,
+      "avg_ramp3_queue": 0.40555555555555556,
+      "avg_ramp3_rate": 600.0000059604645,
+      "total_delay": 501251.0,
+      "episode_steps": 360,
+      "episode_number": 3
+    },
+    {
+      "total_reward": 186.06519506730817,
+      "avg_reward": 0.516847764075856,
+      "avg_mainline_speed": 12.462751936915376,
+      "avg_throughput": 2555.009208448731,
+      "avg_ramp1_queue": 2.9027777777777777,
+      "avg_ramp1_rate": 600.0000059604645,
+      "avg_ramp2_queue": 0.6,
+      "avg_ramp2_rate": 600.0000059604645,
+      "avg_ramp3_queue": 0.4,
+      "avg_ramp3_rate": 600.0000059604645,
+      "total_delay": 462408.0,
+      "episode_steps": 360,
+      "episode_number": 4
+    },
+    {
+      "total_reward": 187.47847889934695,
+      "avg_reward": 0.520773552498186,
+      "avg_mainline_speed": 12.748922553407946,
+      "avg_throughput": 2565.3479510223287,
+      "avg_ramp1_queue": 2.488888888888889,
+      "avg_ramp1_rate": 600.0000059604645,
+      "avg_ramp2_queue": 0.7027777777777777,
+      "avg_ramp2_rate": 600.0000059604645,
+      "avg_ramp3_queue": 0.41388888888888886,
+      "avg_ramp3_rate": 600.0000059604645,
+      "total_delay": 440924.0,
+      "episode_steps": 360,
+      "episode_number": 5
+    }
+  ]
+}

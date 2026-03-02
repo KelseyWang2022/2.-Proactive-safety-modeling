@@ -1,0 +1,72 @@
+[
+  {
+    "seed": 0,
+    "total_reward": 778.9918452174982,
+    "tts": 23745.0,
+    "avg_bottleneck_speed": 10.926835281802353,
+    "avg_ramp_queue": 0.30833333333333335
+  },
+  {
+    "seed": 1,
+    "total_reward": 785.080832080964,
+    "tts": 25914.0,
+    "avg_bottleneck_speed": 10.959542050513004,
+    "avg_ramp_queue": 0.29305555555555557
+  },
+  {
+    "seed": 2,
+    "total_reward": 928.4479740902075,
+    "tts": 21270.0,
+    "avg_bottleneck_speed": 12.00619714537796,
+    "avg_ramp_queue": 0.35833333333333334
+  },
+  {
+    "seed": 3,
+    "total_reward": 850.1511183169354,
+    "tts": 20582.0,
+    "avg_bottleneck_speed": 11.490647870817526,
+    "avg_ramp_queue": 0.3347222222222222
+  },
+  {
+    "seed": 4,
+    "total_reward": 993.4845184179078,
+    "tts": 20235.0,
+    "avg_bottleneck_speed": 12.452306219718952,
+    "avg_ramp_queue": 0.34444444444444444
+  },
+  {
+    "seed": 5,
+    "total_reward": 872.88083115306,
+    "tts": 21773.0,
+    "avg_bottleneck_speed": 11.562667172721076,
+    "avg_ramp_queue": 0.3277777777777778
+  },
+  {
+    "seed": 6,
+    "total_reward": 811.739449187307,
+    "tts": 24203.0,
+    "avg_bottleneck_speed": 11.07834708769204,
+    "avg_ramp_queue": 0.33611111111111114
+  },
+  {
+    "seed": 7,
+    "total_reward": 938.9482360305997,
+    "tts": 19341.0,
+    "avg_bottleneck_speed": 12.049697469429793,
+    "avg_ramp_queue": 0.30416666666666664
+  },
+  {
+    "seed": 8,
+    "total_reward": 796.6662107927284,
+    "tts": 31893.0,
+    "avg_bottleneck_speed": 10.983534769699173,
+    "avg_ramp_queue": 0.32916666666666666
+  },
+  {
+    "seed": 9,
+    "total_reward": 924.847533162804,
+    "tts": 19840.0,
+    "avg_bottleneck_speed": 11.953005778101952,
+    "avg_ramp_queue": 0.3638888888888889
+  }
+]

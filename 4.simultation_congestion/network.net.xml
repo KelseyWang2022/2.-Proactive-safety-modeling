@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-11-20 20:07:08 by Eclipse SUMO netconvert Version 1.19.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <node-files value="nodes.nod.xml"/>
+        <edge-files value="edges.edg.xml"/>
+        <type-files value="types.typ.xml"/>
+    </input>
+
+    <output>
+        <output-file value="network.net.xml"/>
+    </output>
+
+    <tls_building>
+        <tls.guess value="true"/>
+    </tls_building>
+
+</configuration>
+-->
+
+<net version="1.16" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="133.00,250.00" convBoundary="0.00,0.00,1033.00,250.00" origBoundary="-133.00,-250.00,900.00,0.00" projParameter="!"/>
+
+    <type id="motorway" numLanes="2" speed="30.56" allow="passenger"/>
+    <type id="onramp" numLanes="1" speed="22.22" allow="passenger"/>
+
+    <edge id=":m1_0" function="internal">
+        <lane id=":m1_0_0" index="0" allow="passenger" speed="9.18" length="3.80" shape="420.68,241.04 421.66,241.58 422.38,241.87 423.15,241.98 424.27,242.00"/>
+    </edge>
+    <edge id=":m1_1" function="internal">
+        <lane id=":m1_1_0" index="0" allow="passenger" speed="30.56" length="3.86" shape="420.42,245.20 424.27,245.20"/>
+        <lane id=":m1_1_1" index="1" allow="passenger" speed="30.56" length="3.86" shape="420.42,248.40 424.27,248.40"/>
+    </edge>
+    <edge id=":m2_0" function="internal">
+        <lane id=":m2_0_0" index="0" allow="passenger" speed="30.56" length="8.00" shape="629.00,245.20 637.00,245.20"/>
+        <lane id=":m2_0_1" index="1" allow="passenger" speed="30.56" length="8.00" shape="629.00,248.40 637.00,248.40"/>
+    </edge>
+    <edge id=":meter_0" function="internal">
+        <lane id=":meter_0_0" index="0" allow="passenger" speed="22.22" length="0.10" shape="286.60,163.61 286.60,163.61"/>
+    </edge>
+
+    <edge id="main_1" from="ml_up" to="m1" priority="-1" type="motorway">
+        <lane id="main_1_0" index="0" allow="passenger" speed="30.56" length="287.42" shape="133.00,245.20 420.42,245.20"/>
+        <lane id="main_1_1" index="1" allow="passenger" speed="30.56" length="287.42" shape="133.00,248.40 420.42,248.40"/>
+    </edge>
+    <edge id="main_2" from="m1" to="m2" priority="-1" type="motorway">
+        <lane id="main_2_0" index="0" allow="passenger" speed="30.56" length="204.73" acceleration="1" shape="424.27,242.00 629.00,242.00"/>
+        <lane id="main_2_1" index="1" allow="passenger" speed="30.56" length="204.73" shape="424.27,245.20 629.00,245.20"/>
+        <lane id="main_2_2" index="2" allow="passenger" speed="30.56" length="204.73" shape="424.27,248.40 629.00,248.40"/>
+    </edge>
+    <edge id="main_3" from="m2" to="ml_down" priority="-1" type="motorway">
+        <lane id="main_3_0" index="0" allow="passenger" speed="30.56" length="396.00" shape="637.00,245.20 1033.00,245.20"/>
+        <lane id="main_3_1" index="1" allow="passenger" speed="30.56" length="396.00" shape="637.00,248.40 1033.00,248.40"/>
+    </edge>
+    <edge id="ramp_0" from="ramp_start" to="meter" priority="-1" type="onramp">
+        <lane id="ramp_0_0" index="0" allow="passenger" speed="22.22" length="330.01" shape="0.80,-1.39 286.60,163.61"/>
+    </edge>
+    <edge id="ramp_1" from="meter" to="m1" priority="-1" type="onramp">
+        <lane id="ramp_1_0" index="0" allow="passenger" speed="22.22" length="154.82" shape="286.60,163.61 420.68,241.04"/>
+    </edge>
+
+    <tlLogic id="meter" type="static" programID="0" offset="0">
+        <phase duration="9999" state="G"/>
+    </tlLogic>
+
+    <junction id="m1" type="priority" x="433.00" y="250.00" incLanes="ramp_1_0 main_1_0 main_1_1" intLanes=":m1_0_0 :m1_1_0 :m1_1_1" shape="424.27,250.00 424.27,240.40 423.18,240.37 422.80,240.30 422.44,240.17 422.02,239.96 421.48,239.65 419.88,242.42 420.84,243.08 421.03,243.31 421.02,243.47 420.82,243.57 420.42,243.60 420.42,250.00">
+        <request index="0" response="000" foes="000" cont="0"/>
+        <request index="1" response="000" foes="000" cont="0"/>
+        <request index="2" response="000" foes="000" cont="0"/>
+    </junction>
+    <junction id="m2" type="priority" x="633.00" y="250.00" incLanes="main_2_0 main_2_1 main_2_2" intLanes=":m2_0_0 :m2_0_1" shape="637.00,250.00 637.00,243.60 633.97,242.77 632.03,241.23 630.79,240.64 629.00,240.40 629.00,250.00">
+        <request index="0" response="00" foes="00" cont="0"/>
+        <request index="1" response="00" foes="00" cont="0"/>
+    </junction>
+    <junction id="meter" type="traffic_light" x="285.80" y="165.00" incLanes="ramp_0_0" intLanes=":meter_0_0" shape="285.80,165.00 287.40,162.23 285.80,165.00">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+    <junction id="ml_down" type="dead_end" x="1033.00" y="250.00" incLanes="main_3_0 main_3_1" intLanes="" shape="1033.00,243.60 1033.00,250.00"/>
+    <junction id="ml_up" type="dead_end" x="133.00" y="250.00" incLanes="" intLanes="" shape="133.00,250.00 133.00,243.60"/>
+    <junction id="ramp_start" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="-0.00,-0.00 1.60,-2.77"/>
+
+    <connection from="main_1" to="main_2" fromLane="0" toLane="1" via=":m1_1_0" dir="s" state="M"/>
+    <connection from="main_1" to="main_2" fromLane="1" toLane="2" via=":m1_1_1" dir="s" state="M"/>
+    <connection from="main_2" to="main_3" fromLane="1" toLane="0" via=":m2_0_0" dir="s" state="M"/>
+    <connection from="main_2" to="main_3" fromLane="2" toLane="1" via=":m2_0_1" dir="s" state="M"/>
+    <connection from="ramp_0" to="ramp_1" fromLane="0" toLane="0" via=":meter_0_0" tl="meter" linkIndex="0" dir="s" state="O"/>
+    <connection from="ramp_1" to="main_2" fromLane="0" toLane="0" via=":m1_0_0" dir="s" state="M"/>
+
+    <connection from=":m1_0" to="main_2" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":m1_1" to="main_2" fromLane="0" toLane="1" dir="s" state="M"/>
+    <connection from=":m1_1" to="main_2" fromLane="1" toLane="2" dir="s" state="M"/>
+    <connection from=":m2_0" to="main_3" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":m2_0" to="main_3" fromLane="1" toLane="1" dir="s" state="M"/>
+    <connection from=":meter_0" to="ramp_1" fromLane="0" toLane="0" dir="s" state="M"/>
+
+</net>

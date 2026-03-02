@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="highway.net.xml"/>
+        <route-files value="highway.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="1"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="600"/>
+        <collision.action value="warn"/>
+        <collision.mingap-factor value="0"/>
+        <routing-algorithm value="dijkstra"/>
+
+        <!-- 启用换道模型，重要！-->
+        <lateral-resolution value="0.8"/>
+    </processing>
+
+    <report>
+        <verbose value="false"/>
+        <no-step-log value="true"/>
+        <duration-log.statistics value="true"/>
+        <no-warnings value="false"/>
+    </report>
+
+</configuration>

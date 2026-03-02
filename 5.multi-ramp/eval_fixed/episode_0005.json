@@ -1,0 +1,15 @@
+{
+  "total_reward": 187.47847889934695,
+  "avg_reward": 0.520773552498186,
+  "avg_mainline_speed": 12.748922553407946,
+  "avg_throughput": 2565.3479510223287,
+  "avg_ramp1_queue": 2.488888888888889,
+  "avg_ramp1_rate": 600.0000059604645,
+  "avg_ramp2_queue": 0.7027777777777777,
+  "avg_ramp2_rate": 600.0000059604645,
+  "avg_ramp3_queue": 0.41388888888888886,
+  "avg_ramp3_rate": 600.0000059604645,
+  "total_delay": 440924.0,
+  "episode_steps": 360,
+  "episode_number": 5
+}

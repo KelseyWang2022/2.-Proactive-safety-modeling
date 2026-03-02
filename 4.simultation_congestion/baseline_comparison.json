@@ -1,0 +1,608 @@
+{
+  "no_control": {
+    "name": "No Control (\u65e0\u63a7\u5236)",
+    "episodes": [
+      {
+        "avg_mainline_speed": 7.287993996841899,
+        "std_mainline_speed": 1.625815254716707,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 5.177597892533675,
+        "avg_bottleneck_speed": 11.815674799134198,
+        "std_bottleneck_speed": 2.4589199063446467,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 6.862784585409425,
+        "avg_ramp_queue": 0.05,
+        "std_ramp_queue": 0.21794494717703364,
+        "max_ramp_queue": 1.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 345.69654938075655,
+        "std_throughput": 31.443672180220872,
+        "max_throughput": 400.7163862177107,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11484976865235165,
+        "std_occupancy": 0.025061239219834535,
+        "max_occupancy": 0.17424242424242425,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 3600.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 3600.0,
+        "min_metering_rate": 3600.0,
+        "total_vehicles": 1661,
+        "congestion_percentage": 91.66666666666666,
+        "simulation_time": 3600
+      },
+      {
+        "avg_mainline_speed": 7.287993996841899,
+        "std_mainline_speed": 1.625815254716707,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 5.177597892533675,
+        "avg_bottleneck_speed": 11.815674799134198,
+        "std_bottleneck_speed": 2.4589199063446467,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 6.862784585409425,
+        "avg_ramp_queue": 0.05,
+        "std_ramp_queue": 0.21794494717703364,
+        "max_ramp_queue": 1.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 345.69654938075655,
+        "std_throughput": 31.443672180220872,
+        "max_throughput": 400.7163862177107,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11484976865235165,
+        "std_occupancy": 0.025061239219834535,
+        "max_occupancy": 0.17424242424242425,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 3600.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 3600.0,
+        "min_metering_rate": 3600.0,
+        "total_vehicles": 1661,
+        "congestion_percentage": 91.66666666666666,
+        "simulation_time": 3600
+      },
+      {
+        "avg_mainline_speed": 7.287993996841899,
+        "std_mainline_speed": 1.625815254716707,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 5.177597892533675,
+        "avg_bottleneck_speed": 11.815674799134198,
+        "std_bottleneck_speed": 2.4589199063446467,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 6.862784585409425,
+        "avg_ramp_queue": 0.05,
+        "std_ramp_queue": 0.21794494717703364,
+        "max_ramp_queue": 1.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 345.69654938075655,
+        "std_throughput": 31.443672180220872,
+        "max_throughput": 400.7163862177107,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11484976865235165,
+        "std_occupancy": 0.025061239219834535,
+        "max_occupancy": 0.17424242424242425,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 3600.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 3600.0,
+        "min_metering_rate": 3600.0,
+        "total_vehicles": 1661,
+        "congestion_percentage": 91.66666666666666,
+        "simulation_time": 3600
+      }
+    ],
+    "average": {
+      "avg_mainline_speed": {
+        "mean": 7.287993996841899,
+        "std": 0.0
+      },
+      "std_mainline_speed": {
+        "mean": 1.6258152547167068,
+        "std": 2.220446049250313e-16
+      },
+      "max_mainline_speed": {
+        "mean": 17.811807996842802,
+        "std": 0.0
+      },
+      "min_mainline_speed": {
+        "mean": 5.177597892533675,
+        "std": 0.0
+      },
+      "avg_bottleneck_speed": {
+        "mean": 11.815674799134198,
+        "std": 0.0
+      },
+      "std_bottleneck_speed": {
+        "mean": 2.4589199063446467,
+        "std": 0.0
+      },
+      "max_bottleneck_speed": {
+        "mean": 24.233887970855772,
+        "std": 0.0
+      },
+      "min_bottleneck_speed": {
+        "mean": 6.862784585409425,
+        "std": 0.0
+      },
+      "avg_ramp_queue": {
+        "mean": 0.05000000000000001,
+        "std": 6.938893903907228e-18
+      },
+      "std_ramp_queue": {
+        "mean": 0.21794494717703364,
+        "std": 0.0
+      },
+      "max_ramp_queue": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "min_ramp_queue": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "avg_throughput": {
+        "mean": 345.69654938075655,
+        "std": 0.0
+      },
+      "std_throughput": {
+        "mean": 31.443672180220872,
+        "std": 0.0
+      },
+      "max_throughput": {
+        "mean": 400.71638621771064,
+        "std": 5.684341886080802e-14
+      },
+      "min_throughput": {
+        "mean": 209.30660884814566,
+        "std": 0.0
+      },
+      "avg_occupancy": {
+        "mean": 0.11484976865235165,
+        "std": 0.0
+      },
+      "std_occupancy": {
+        "mean": 0.025061239219834535,
+        "std": 0.0
+      },
+      "max_occupancy": {
+        "mean": 0.17424242424242423,
+        "std": 2.7755575615628914e-17
+      },
+      "min_occupancy": {
+        "mean": 0.015151515151515152,
+        "std": 0.0
+      },
+      "avg_metering_rate": {
+        "mean": 3600.0,
+        "std": 0.0
+      },
+      "std_metering_rate": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "max_metering_rate": {
+        "mean": 3600.0,
+        "std": 0.0
+      },
+      "min_metering_rate": {
+        "mean": 3600.0,
+        "std": 0.0
+      },
+      "total_vehicles": {
+        "mean": 1661.0,
+        "std": 0.0
+      },
+      "congestion_percentage": {
+        "mean": 91.66666666666667,
+        "std": 1.4210854715202004e-14
+      },
+      "simulation_time": {
+        "mean": 3600.0,
+        "std": 0.0
+      }
+    }
+  },
+  "fixed": {
+    "name": "Fixed 50% (\u56fa\u5b9a\u63a7\u5236)",
+    "episodes": [
+      {
+        "avg_mainline_speed": 10.347768229843183,
+        "std_mainline_speed": 1.8430159697050166,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 6.558011244424431,
+        "avg_bottleneck_speed": 12.219525231455275,
+        "std_bottleneck_speed": 2.5770187862000853,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 6.907607140343822,
+        "avg_ramp_queue": 0.3,
+        "std_ramp_queue": 0.4932882862316247,
+        "max_ramp_queue": 2.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 376.2204247387959,
+        "std_throughput": 34.88851535506424,
+        "max_throughput": 448.78644996420394,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11139368585530447,
+        "std_occupancy": 0.027371254731381883,
+        "max_occupancy": 0.18181818181818182,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 1800.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 1800.0,
+        "min_metering_rate": 1800.0,
+        "total_vehicles": 1635,
+        "congestion_percentage": 87.5,
+        "simulation_time": 3600
+      },
+      {
+        "avg_mainline_speed": 10.347768229843183,
+        "std_mainline_speed": 1.8430159697050166,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 6.558011244424431,
+        "avg_bottleneck_speed": 12.219525231455275,
+        "std_bottleneck_speed": 2.5770187862000853,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 6.907607140343822,
+        "avg_ramp_queue": 0.3,
+        "std_ramp_queue": 0.4932882862316247,
+        "max_ramp_queue": 2.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 376.2204247387959,
+        "std_throughput": 34.88851535506424,
+        "max_throughput": 448.78644996420394,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11139368585530447,
+        "std_occupancy": 0.027371254731381883,
+        "max_occupancy": 0.18181818181818182,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 1800.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 1800.0,
+        "min_metering_rate": 1800.0,
+        "total_vehicles": 1635,
+        "congestion_percentage": 87.5,
+        "simulation_time": 3600
+      },
+      {
+        "avg_mainline_speed": 10.347768229843183,
+        "std_mainline_speed": 1.8430159697050166,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 6.558011244424431,
+        "avg_bottleneck_speed": 12.219525231455275,
+        "std_bottleneck_speed": 2.5770187862000853,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 6.907607140343822,
+        "avg_ramp_queue": 0.3,
+        "std_ramp_queue": 0.4932882862316247,
+        "max_ramp_queue": 2.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 376.2204247387959,
+        "std_throughput": 34.88851535506424,
+        "max_throughput": 448.78644996420394,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11139368585530447,
+        "std_occupancy": 0.027371254731381883,
+        "max_occupancy": 0.18181818181818182,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 1800.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 1800.0,
+        "min_metering_rate": 1800.0,
+        "total_vehicles": 1635,
+        "congestion_percentage": 87.5,
+        "simulation_time": 3600
+      }
+    ],
+    "average": {
+      "avg_mainline_speed": {
+        "mean": 10.347768229843183,
+        "std": 0.0
+      },
+      "std_mainline_speed": {
+        "mean": 1.8430159697050168,
+        "std": 2.220446049250313e-16
+      },
+      "max_mainline_speed": {
+        "mean": 17.811807996842802,
+        "std": 0.0
+      },
+      "min_mainline_speed": {
+        "mean": 6.558011244424431,
+        "std": 0.0
+      },
+      "avg_bottleneck_speed": {
+        "mean": 12.219525231455274,
+        "std": 1.7763568394002505e-15
+      },
+      "std_bottleneck_speed": {
+        "mean": 2.5770187862000853,
+        "std": 0.0
+      },
+      "max_bottleneck_speed": {
+        "mean": 24.233887970855772,
+        "std": 0.0
+      },
+      "min_bottleneck_speed": {
+        "mean": 6.907607140343823,
+        "std": 8.881784197001252e-16
+      },
+      "avg_ramp_queue": {
+        "mean": 0.3,
+        "std": 0.0
+      },
+      "std_ramp_queue": {
+        "mean": 0.49328828623162463,
+        "std": 5.551115123125783e-17
+      },
+      "max_ramp_queue": {
+        "mean": 2.0,
+        "std": 0.0
+      },
+      "min_ramp_queue": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "avg_throughput": {
+        "mean": 376.2204247387959,
+        "std": 0.0
+      },
+      "std_throughput": {
+        "mean": 34.88851535506424,
+        "std": 0.0
+      },
+      "max_throughput": {
+        "mean": 448.78644996420394,
+        "std": 0.0
+      },
+      "min_throughput": {
+        "mean": 209.30660884814566,
+        "std": 0.0
+      },
+      "avg_occupancy": {
+        "mean": 0.11139368585530447,
+        "std": 0.0
+      },
+      "std_occupancy": {
+        "mean": 0.027371254731381883,
+        "std": 0.0
+      },
+      "max_occupancy": {
+        "mean": 0.1818181818181818,
+        "std": 2.7755575615628914e-17
+      },
+      "min_occupancy": {
+        "mean": 0.015151515151515152,
+        "std": 0.0
+      },
+      "avg_metering_rate": {
+        "mean": 1800.0,
+        "std": 0.0
+      },
+      "std_metering_rate": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "max_metering_rate": {
+        "mean": 1800.0,
+        "std": 0.0
+      },
+      "min_metering_rate": {
+        "mean": 1800.0,
+        "std": 0.0
+      },
+      "total_vehicles": {
+        "mean": 1635.0,
+        "std": 0.0
+      },
+      "congestion_percentage": {
+        "mean": 87.5,
+        "std": 0.0
+      },
+      "simulation_time": {
+        "mean": 3600.0,
+        "std": 0.0
+      }
+    }
+  },
+  "alinea": {
+    "name": "ALINEA (\u7ecf\u5178\u63a7\u5236)",
+    "episodes": [
+      {
+        "avg_mainline_speed": 8.766292005345516,
+        "std_mainline_speed": 1.9376480179461448,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 5.6068478400450275,
+        "avg_bottleneck_speed": 12.054614794886367,
+        "std_bottleneck_speed": 2.2589306690955846,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 8.080962893970115,
+        "avg_ramp_queue": 0.125,
+        "std_ramp_queue": 0.3550234734023465,
+        "max_ramp_queue": 2.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 367.5648370348308,
+        "std_throughput": 35.93507872281858,
+        "max_throughput": 442.0793396330049,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11255553441206494,
+        "std_occupancy": 0.023975977503105053,
+        "max_occupancy": 0.16666666666666669,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 2399.6910271179745,
+        "std_metering_rate": 327.54374919136785,
+        "max_metering_rate": 2954.5335109386524,
+        "min_metering_rate": 1816.439393939394,
+        "total_vehicles": 1666,
+        "congestion_percentage": 91.66666666666666,
+        "simulation_time": 3600
+      },
+      {
+        "avg_mainline_speed": 7.538064026357862,
+        "std_mainline_speed": 1.7023977183043422,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 4.185207502442803,
+        "avg_bottleneck_speed": 11.78700042169939,
+        "std_bottleneck_speed": 2.481139346940768,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 5.590624159941937,
+        "avg_ramp_queue": 0.05,
+        "std_ramp_queue": 0.3122498999199199,
+        "max_ramp_queue": 3.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 352.61714837823473,
+        "std_throughput": 35.56798187846912,
+        "max_throughput": 423.4754210197066,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11564087109986679,
+        "std_occupancy": 0.025601262639489735,
+        "max_occupancy": 0.20016667926587423,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 3210.2557516882543,
+        "std_metering_rate": 66.10941789441691,
+        "max_metering_rate": 3240.0,
+        "min_metering_rate": 2970.9729048780464,
+        "total_vehicles": 1683,
+        "congestion_percentage": 89.16666666666667,
+        "simulation_time": 3600
+      },
+      {
+        "avg_mainline_speed": 7.464761190670489,
+        "std_mainline_speed": 1.7059094108070787,
+        "max_mainline_speed": 17.811807996842802,
+        "min_mainline_speed": 5.234478634692722,
+        "avg_bottleneck_speed": 11.891063779536783,
+        "std_bottleneck_speed": 2.302010636250257,
+        "max_bottleneck_speed": 24.233887970855772,
+        "min_bottleneck_speed": 7.647741425628554,
+        "avg_ramp_queue": 0.1,
+        "std_ramp_queue": 0.43588989435406733,
+        "max_ramp_queue": 3.0,
+        "min_ramp_queue": 0.0,
+        "avg_throughput": 352.1266609071334,
+        "std_throughput": 31.597015471493687,
+        "max_throughput": 413.74519957347945,
+        "min_throughput": 209.30660884814566,
+        "avg_occupancy": 0.11491278798925254,
+        "std_occupancy": 0.02275505672867851,
+        "max_occupancy": 0.15151515151515152,
+        "min_occupancy": 0.015151515151515152,
+        "avg_metering_rate": 3240.0,
+        "std_metering_rate": 0.0,
+        "max_metering_rate": 3240.0,
+        "min_metering_rate": 3240.0,
+        "total_vehicles": 1682,
+        "congestion_percentage": 92.5,
+        "simulation_time": 3600
+      }
+    ],
+    "average": {
+      "avg_mainline_speed": {
+        "mean": 7.923039074124623,
+        "std": 0.5970203547280579
+      },
+      "std_mainline_speed": {
+        "mean": 1.7819850490191886,
+        "std": 0.11007967695393597
+      },
+      "max_mainline_speed": {
+        "mean": 17.811807996842802,
+        "std": 0.0
+      },
+      "min_mainline_speed": {
+        "mean": 5.008844659060184,
+        "std": 0.6019126905646976
+      },
+      "avg_bottleneck_speed": {
+        "mean": 11.910892998707515,
+        "std": 0.11014917652515682
+      },
+      "std_bottleneck_speed": {
+        "mean": 2.3473602174288697,
+        "std": 0.09621715894174943
+      },
+      "max_bottleneck_speed": {
+        "mean": 24.233887970855772,
+        "std": 0.0
+      },
+      "min_bottleneck_speed": {
+        "mean": 7.106442826513535,
+        "std": 1.086339383005507
+      },
+      "avg_ramp_queue": {
+        "mean": 0.09166666666666667,
+        "std": 0.03118047822311618
+      },
+      "std_ramp_queue": {
+        "mean": 0.3677210892254446,
+        "std": 0.05126814567618795
+      },
+      "max_ramp_queue": {
+        "mean": 2.6666666666666665,
+        "std": 0.4714045207910317
+      },
+      "min_ramp_queue": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "avg_throughput": {
+        "mean": 357.4362154400663,
+        "std": 7.164815701154928
+      },
+      "std_throughput": {
+        "mean": 34.366692024260466,
+        "std": 1.9641828120098475
+      },
+      "max_throughput": {
+        "mean": 426.433320075397,
+        "std": 11.754935086902632
+      },
+      "min_throughput": {
+        "mean": 209.30660884814566,
+        "std": 0.0
+      },
+      "avg_occupancy": {
+        "mean": 0.11436973116706141,
+        "std": 0.0013168165281896749
+      },
+      "std_occupancy": {
+        "mean": 0.024110765623757763,
+        "std": 0.0011658610265338968
+      },
+      "max_occupancy": {
+        "mean": 0.17278283248256412,
+        "std": 0.02032729530025248
+      },
+      "min_occupancy": {
+        "mean": 0.015151515151515152,
+        "std": 0.0
+      },
+      "avg_metering_rate": {
+        "mean": 2949.9822596020763,
+        "std": 389.3040889318285
+      },
+      "std_metering_rate": {
+        "mean": 131.21772236192825,
+        "std": 141.42264173170207
+      },
+      "max_metering_rate": {
+        "mean": 3144.8445036462176,
+        "std": 134.57019347786286
+      },
+      "min_metering_rate": {
+        "mean": 2675.8040996058135,
+        "std": 617.5082549981487
+      },
+      "total_vehicles": {
+        "mean": 1677.0,
+        "std": 7.788880963698615
+      },
+      "congestion_percentage": {
+        "mean": 91.1111111111111,
+        "std": 1.4163943093313256
+      },
+      "simulation_time": {
+        "mean": 3600.0,
+        "std": 0.0
+      }
+    }
+  }
+}

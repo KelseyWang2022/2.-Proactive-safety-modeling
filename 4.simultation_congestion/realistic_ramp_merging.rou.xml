@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+真实匝道汇入场景配置
+关键修改：
+1. 降低匝道车辆的换道激进度
+2. 要求更大的安全间距
+3. 减少"强行插入"的能力
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    
+    <!-- 
+    ==========================================================
+    车辆类型定义 - 关键参数说明
+    ==========================================================
+    
+    换道模型参数（影响汇入行为）：
+    - lcStrategic: 战略性换道意愿 [0-5]
+      * 高(>2.0): 提前很远就开始换道，容易插入
+      * 低(<1.0): 只在必要时换道，不容易插入 ✓ 真实
+    
+    - lcCooperative: 协作换道 [0-1]  
+      * 1.0: 主线车辆会主动让路给匝道车
+      * 0.0: 主线车辆不让路 ✓ 更真实
+    
+    - lcSpeedGain: 为了提速而换道 [0-5]
+      * 高值: 频繁换道找快车道
+      * 低值: 保持车道 ✓ 更稳定
+    
+    - lcAssertive: 换道激进度 [0-5]
+      * 高(>2.0): 强行插入，接受小gap
+      * 低(<1.0): 谨慎换道，需要大gap ✓ 真实
+    
+    - lcImpatience: 不耐烦程度 [0-1]
+      * 会随时间增加，但基础值影响初始行为
+    
+    - minGap: 最小车头间距 (米)
+      * 2.5m: 标准值
+      * 3.5m+: 更保守，需要更大gap ✓ 更真实
+    
+    - tau: 反应时间 (秒)
+      * 1.0s: 标准
+      * 1.5s+: 更保守 ✓ 更安全
+    -->
+    
+    <!-- ===== 场景1: 默认SUMO参数 (不真实) ===== -->
+    <vType id="default_car" 
+           accel="2.6" decel="4.5" sigma="0.5" 
+           length="5.0" minGap="2.5" maxSpeed="33.33"
+           speedFactor="1.0" speedDev="0.1" tau="1.0">
+        <param key="lcStrategic" value="1.0"/>      <!-- 标准 -->
+        <param key="lcCooperative" value="1.0"/>    <!-- 主线会让路! -->
+        <param key="lcSpeedGain" value="1.0"/>
+        <param key="lcAssertive" value="1.0"/>      <!-- 标准激进度 -->
+        <param key="lcImpatience" value="0"/>
+    </vType>
+    
+    <!-- ===== 场景2: 真实匝道汇入 (推荐) ===== -->
+    <vType id="realistic_car" 
+           accel="2.6" decel="4.5" sigma="0.5" 
+           length="5.0" minGap="3.5" maxSpeed="33.33"
+           speedFactor="1.0" speedDev="0.1" tau="1.5">
+        <!-- 关键修改在这里！ -->
+        <param key="lcStrategic" value="0.5"/>      <!-- ↓ 降低战略性换道 -->
+        <param key="lcCooperative" value="0.0"/>    <!-- ↓ 主线不让路! -->
+        <param key="lcSpeedGain" value="0.5"/>      <!-- ↓ 减少换道欲望 -->
+        <param key="lcAssertive" value="0.3"/>      <!-- ↓ 非常保守! -->
+        <param key="lcImpatience" value="0"/>
+        <param key="junctionModel.impatience" value="0.0"/>  <!-- 路口不着急 -->
+    </vType>
+    
+    <!-- ===== 场景3: 极度保守 (用于测试极端情况) ===== -->
+    <vType id="very_conservative_car" 
+           accel="2.6" decel="4.5" sigma="0.5" 
+           length="5.0" minGap="4.5" maxSpeed="33.33"
+           speedFactor="0.95" speedDev="0.1" tau="2.0">
+        <param key="lcStrategic" value="0.3"/>      <!-- 几乎不换道 -->
+        <param key="lcCooperative" value="0.0"/>    
+        <param key="lcSpeedGain" value="0.3"/>      
+        <param key="lcAssertive" value="0.1"/>      <!-- 极度保守 -->
+        <param key="lcImpatience" value="0"/>
+    </vType>
+    
+    <!-- ===== 场景4: 混合交通流 (最真实) ===== -->
+    <!-- 激进驾驶员 (20%) -->
+    <vType id="aggressive_car" 
+           accel="3.0" decel="5.0" sigma="0.3" 
+           length="5.0" minGap="2.0" maxSpeed="36.11"
+           speedFactor="1.2" speedDev="0.15" tau="0.8">
+        <param key="lcStrategic" value="2.0"/>
+        <param key="lcCooperative" value="0.3"/>
+        <param key="lcSpeedGain" value="2.0"/>
+        <param key="lcAssertive" value="2.0"/>
+    </vType>
+    
+    <!-- 谨慎驾驶员 (30%) -->
+    <vType id="cautious_car" 
+           accel="2.0" decel="4.0" sigma="0.3" 
+           length="5.0" minGap="4.0" maxSpeed="30.56"
+           speedFactor="0.9" speedDev="0.1" tau="1.8">
+        <param key="lcStrategic" value="0.5"/>
+        <param key="lcCooperative" value="0.1"/>
+        <param key="lcSpeedGain" value="0.3"/>
+        <param key="lcAssertive" value="0.2"/>
+    </vType>
+    
+    <!-- 普通驾驶员 (50%) -->
+    <vType id="normal_car" 
+           accel="2.6" decel="4.5" sigma="0.5" 
+           length="5.0" minGap="3.0" maxSpeed="33.33"
+           speedFactor="1.0" speedDev="0.1" tau="1.2">
+        <param key="lcStrategic" value="0.8"/>
+        <param key="lcCooperative" value="0.2"/>
+        <param key="lcSpeedGain" value="0.8"/>
+        <param key="lcAssertive" value="0.5"/>
+    </vType>
+    
+    <!--
+    ==========================================================
+    路径定义
+    ==========================================================
+    -->
+    <route id="main_route" edges="main_1 main_2 main_3"/>
+    <route id="ramp_route" edges="ramp_0 ramp_1 main_2 main_3"/>
+    
+    <!--
+    ==========================================================
+    流量定义 - 可选择不同场景
+    ==========================================================
+    -->
+    
+    <!-- 使用哪个场景？修改下面的 type 参数 -->
+    <!-- 
+    选项: 
+    - default_car (默认，不真实)
+    - realistic_car (推荐) ⭐
+    - very_conservative_car (极端测试)
+    - 或使用 vTypeDistribution 混合交通流
+    -->
+    
+    <!-- 主线流量 -->
+    <flow id="main_flow_peak" route="main_route" 
+          begin="1200" end="2400" 
+          vehsPerHour="3600"
+          type="realistic_car"           <!-- 👈 改这里选择场景 -->
+          departLane="best" 
+          departSpeed="max"/>
+    
+    <!-- 匝道流量 -->
+    <flow id="ramp_flow_peak" route="ramp_route" 
+          begin="1200" end="2400" 
+          vehsPerHour="1200"
+          type="realistic_car"           <!-- 👈 改这里选择场景 -->
+          departSpeed="max"/>
+    
+    <!-- 
+    ==========================================================
+    混合交通流场景（最真实）
+    ==========================================================
+    取消下面的注释使用混合流量
+    -->
+    <!--
+    <vTypeDistribution id="mixed_traffic">
+        <vType id="aggressive_car" probability="0.2"/>
+        <vType id="normal_car" probability="0.5"/>
+        <vType id="cautious_car" probability="0.3"/>
+    </vTypeDistribution>
+    
+    <flow id="main_flow_mixed" route="main_route" 
+          begin="1200" end="2400" 
+          vehsPerHour="3600"
+          type="mixed_traffic"
+          departLane="best" 
+          departSpeed="max"/>
+    
+    <flow id="ramp_flow_mixed" route="ramp_route" 
+          begin="1200" end="2400" 
+          vehsPerHour="1200"
+          type="mixed_traffic"
+          departSpeed="max"/>
+    -->
+    
+    <!--
+    ==========================================================
+    其他时段流量（保持低流量）
+    ==========================================================
+    -->
+    <flow id="main_flow_warmup" route="main_route" 
+          begin="0" end="1200" 
+          vehsPerHour="2000"
+          type="realistic_car"
+          departLane="best" departSpeed="max"/>
+    
+    <flow id="ramp_flow_warmup" route="ramp_route" 
+          begin="0" end="1200" 
+          vehsPerHour="400"
+          type="realistic_car"
+          departSpeed="max"/>
+    
+    <flow id="main_flow_recovery" route="main_route" 
+          begin="2400" end="3600" 
+          vehsPerHour="2400"
+          type="realistic_car"
+          departLane="best" departSpeed="max"/>
+    
+    <flow id="ramp_flow_recovery" route="ramp_route" 
+          begin="2400" end="3600" 
+          vehsPerHour="600"
+          type="realistic_car"
+          departSpeed="max"/>
+
+</routes>

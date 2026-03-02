@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <!--
+    终极保守参数
+    目标：让实际容量降到理论容量的50%
+    -->
+    <vType id="ultra_conservative"
+           accel="1.5"
+           decel="3.0"
+           sigma="1.0"
+           length="6.0"
+           minGap="5.5"
+           maxSpeed="22.0"
+           speedFactor="0.80"
+           speedDev="0.3"
+           tau="2.5">
+        <param key="lcStrategic" value="0.2"/>
+        <param key="lcCooperative" value="0.0"/>
+        <param key="lcSpeedGain" value="0.1"/>
+        <param key="lcAssertive" value="0.05"/>
+        <param key="lcImpatience" value="0.0"/>
+        <param key="lcTimeToImpatience" value="600.0"/>
+    </vType>
+
+    <route id="main_route" edges="main_1 main_2 main_3"/>
+    <route id="ramp_route" edges="ramp_0 ramp_1 main_2 main_3"/>
+
+    <!-- 你说的流量：3000 + 800 = 3800 veh/h -->
+<!--    <flow id="main_flow" type="ultra_conservative" route="main_route"-->
+<!--          begin="0" end="3600" vehsPerHour="3000" departLane="best" departSpeed="max"/>-->
+<!--    <flow id="ramp_flow" type="ultra_conservative" route="ramp_route"-->
+<!--          begin="0" end="3600" vehsPerHour="800" departSpeed="max"/>-->
+    <!-- 主干道随机流量：期望 3000 veh/h -->
+    <flow id="main_flow" type="ultra_conservative" route="main_route"
+          begin="0" end="3600" probability="0.92"
+          departLane="random" departSpeed="random"/>
+
+<!-- 匝道随机流量：期望 800 veh/h -->
+    <flow id="ramp_flow" type="ultra_conservative" route="ramp_route"
+          begin="0" end="3600" probability="0.41"
+          departLane="random" departSpeed="random"/>
+    <!-- 主干道：期望 3000 veh/h -->
+
+
+
+</routes>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <input>
+        <!-- 跟你工程里的文件名保持一致 -->
+        <net-file value="multi_ramp_network.net.xml"/>
+        <route-files value="multi_ramp_routes.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <report>
+        <!-- 把错误打印到控制台，方便你在终端里看到 -->
+        <gui-settings-file value=""/>
+        <verbose value="true"/>
+        <no-warnings value="false"/>
+    </report>
+
+</configuration>

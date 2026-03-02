@@ -1,0 +1,618 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+% Page layout settings
+\geometry{margin=1in}
+
+% Colors for code listings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Listing style configuration
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% Title formatting
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+
+% Header setup
+\pagestyle{fancy}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+% Title page
+\begin{center}
+\Large{\textbf{Reinforcement Learning for Ramp Metering on Highways}} 
+\\
+\vspace{0.4cm}
+\normalsize
+SAIDA Haithem, MARHOUM Zineddine, OUKID Anis, FERHATI Khalil \\
+\vspace{0.2cm}
+\textit{Module: Reinforcement Learning and Optimal Control}
+\medskip
+\normalsize
+\end{center}
+
+\hrule
+\vspace{0.4cm}
+
+\tableofcontents
+\newpage
+
+% 1. Introduction
+\section{Introduction}
+The objective of this project is to apply reinforcement learning (RL) algorithms, specifically Q-learning and Deep Q-Networks (DQN), to control ramp metering on highways. Ramp metering involves managing the flow of vehicles entering a highway via a controlled traffic light on the ramp. The goal is to optimize traffic flow on both the highway and the ramp, minimizing congestion and waiting times.
+
+To achieve this, the project uses the Simulation of Urban Mobility (SUMO) simulator to model a realistic traffic environment. SUMO provides the ability to simulate car-following behaviors, lane-changing dynamics, and traffic demand under various conditions. The RL agent is trained within this simulated environment to learn optimal policies for controlling the ramp traffic light.
+
+The project involves implementing the Q-learning and DQN algorithms from scratch, analyzing their performance, and comparing the results under different scenarios. The trained policies are evaluated based on total rewards and specific traffic performance metrics. This report details the simulation setup, problem formulation, implementation steps, and evaluation results, highlighting the effectiveness of reinforcement learning in solving real-world traffic optimization problems.
+
+% 2. Description of Simulations
+\section{Description of Simulations}
+The simulation for ramp metering control on the highway was conducted using the SUMO (Simulation of Urban Mobility) traffic simulator. The purpose of this simulation is to analyze the effects of reinforcement learning-based traffic control strategies, specifically Q-learning and Deep Q-learning, on optimizing traffic conditions.
+
+\subsection{Highway Configuration}
+\begin{itemize}
+    \item \textbf{Number of Lanes:} The highway consists of three lanes, while the ramp has a single dedicated lane for merging.
+    \item \textbf{Road Length:}
+    \begin{itemize}
+        \item The main highway stretches 1 kilometer, with the merge point dividing it into two equal segments: 500 meters before and 500 meters after the ramp junction.
+        \item The ramp itself has a total length of 136.15 meters, allowing for acceleration and merging.
+    \end{itemize}
+    \item \textbf{Speed Limits:}
+    \begin{itemize}
+        \item Highway: Vehicles are permitted to travel at a maximum speed of 33.33 m/s (120 km/h).
+        \item Ramp: The maximum speed is restricted to 16.67 m/s (60 km/h) to account for merging conditions.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Traffic Control and Intersection}
+\begin{itemize}
+    \item \textbf{Traffic Light Configuration:}
+    \begin{itemize}
+        \item The ramp is regulated by a traffic light situated at the merge point.
+        \item The default static traffic light program consists of:
+        \begin{itemize}
+            \item \textbf{Highway green phase:} Lasting for 30 seconds.
+            \item \textbf{Yellow transition phases:} Lasting for 3 seconds each.
+            \item \textbf{Ramp green phase:} Lasting for 20 seconds.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Vehicle Behavior Models}
+\begin{itemize}
+    \item \textbf{Car-Following Model:} SUMO's built-in car-following model governs vehicle acceleration, deceleration, and gap maintenance.
+    \item \textbf{Lane-Changing Model:} Vehicles adaptively change lanes using SUMO's lane-changing logic.
+\end{itemize}
+
+\subsection{Vehicle Types}
+\begin{itemize}
+    \item \textbf{Passenger Cars:} Represented with the following characteristics:
+    \begin{itemize}
+        \item Length: 5 meters
+        \item Maximum Speed: 40 m/s (144 km/h)
+        \item Acceleration: 2.6 m/s\(^2\)
+        \item Deceleration: 4.5 m/s\(^2\)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Traffic Demand}
+\begin{itemize}
+    \item \textbf{Highway Traffic:}
+    \begin{itemize}
+        \item Flow rate: 1800 vehicles per hour
+        \item Distributed randomly across three lanes
+    \end{itemize}
+    \item \textbf{Ramp Traffic:}
+    \begin{itemize}
+        \item Flow rate: 600 vehicles per hour
+        \item Single ramp lane
+    \end{itemize}
+\end{itemize}
+
+% 3. Problem Reformulation
+\section{Reinforcement Learning Problem Reformulation}
+
+\subsection{Problem Formulation Overview}
+\begin{tcolorbox}[title=MDP Formulation]
+The ramp metering control problem is formulated as a Markov Decision Process (MDP) with the following components:
+\begin{itemize}
+    \item \textbf{State Space} \( \mathcal{S} \): Traffic conditions on highway and ramp
+    \item \textbf{Action Space} \( \mathcal{A} \): Traffic light control decisions
+    \item \textbf{Transition Function} \( P(s_{t+1}|s_t,a_t) \): Traffic evolution dynamics
+    \item \textbf{Reward Function} \( R(s_t,a_t) \): Traffic optimization objectives
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{State Space Definition}
+\begin{tcolorbox}[title=State Representation]
+The state \( s_t \) at time \( t \) is defined as a 5-dimensional vector:
+\[
+s_t = (q_h, v_h, q_r, v_r, w_r)
+\]
+
+Where each component represents:
+\begin{itemize}
+    \item \textbf{Highway Density} (\( q_h \)):
+    \begin{itemize}
+        \item Units: vehicles/km
+        \item Range: [0, 120] vehicles/km
+        \item Measurement: Average over 500m highway section
+    \end{itemize}
+    
+    \item \textbf{Highway Speed} (\( v_h \)):
+    \begin{itemize}
+        \item Units: km/h
+        \item Range: [0, 120] km/h
+        \item Measurement: Average of all vehicles on highway
+    \end{itemize}
+    
+    \item \textbf{Ramp Queue} (\( q_r \)):
+    \begin{itemize}
+        \item Units: number of vehicles
+        \item Range: [0, 20] vehicles
+        \item Measurement: Count of waiting vehicles
+    \end{itemize}
+    
+    \item \textbf{Ramp Speed} (\( v_r \)):
+    \begin{itemize}
+        \item Units: km/h
+        \item Range: [0, 60] km/h
+        \item Measurement: Average speed on ramp
+    \end{itemize}
+    
+    \item \textbf{Waiting Time} (\( w_r \)):
+    \begin{itemize}
+        \item Units: seconds
+        \item Range: [0, 300] seconds
+        \item Measurement: Average waiting time per vehicle
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Action Space Definition}
+\begin{tcolorbox}[title=Control Actions]
+The action space \( \mathcal{A} \) is binary:
+\[
+a_t \in \{0, 1\}
+\]
+
+With the following interpretations:
+\begin{itemize}
+    \item \textbf{Red Light} (\( a_t = 0 \)):
+    \begin{itemize}
+        \item Stops vehicles from entering highway
+        \item Allows highway traffic to flow freely
+        \item Increases ramp queue length
+    \end{itemize}
+    
+    \item \textbf{Green Light} (\( a_t = 1 \)):
+    \begin{itemize}
+        \item Allows vehicles to enter highway
+        \item May cause temporary highway slowdown
+        \item Reduces ramp queue length
+    \end{itemize}
+\end{itemize}
+
+\textbf{Action Duration:} Each action is maintained for a minimum of 5 seconds to prevent rapid switching.
+\end{tcolorbox}
+
+\subsection{Reward Function Design}
+\begin{tcolorbox}[title=Multi-objective Reward]
+The reward function balances multiple traffic objectives:
+\[
+R(s_t, a_t) = -\left( \alpha \cdot w_r + \beta \cdot \max(0, q_h - q_{\text{max}}) + \gamma \cdot \max(0, v_{\text{min}} - v_h) \right)
+\]
+
+\textbf{Component Weights:}
+\begin{itemize}
+    \item \( \alpha = 0.4 \): Waiting time penalty
+    \item \( \beta = 0.3 \): Congestion penalty
+    \item \( \gamma = 0.3 \): Speed penalty
+\end{itemize}
+
+\textbf{Threshold Values:}
+\begin{itemize}
+    \item \( q_{\text{max}} = 80 \) vehicles/km: Maximum desired highway density
+    \item \( v_{\text{min}} = 60 \) km/h: Minimum acceptable highway speed
+\end{itemize}
+
+\textbf{Reward Components Analysis:}
+\begin{enumerate}
+    \item \textbf{Waiting Time Term} (\( \alpha \cdot w_r \)):
+    \begin{itemize}
+        \item Penalizes long queues on ramp
+        \item Linear relationship with waiting time
+        \item Range: [0, 120] (normalized)
+    \end{itemize}
+    
+    \item \textbf{Congestion Term} (\( \beta \cdot \max(0, q_h - q_{\text{max}}) \)):
+    \begin{itemize}
+        \item Activates only when density exceeds threshold
+        \item Quadratic penalty for severe congestion
+        \item Range: [0, 100] (normalized)
+    \end{itemize}
+    
+    \item \textbf{Speed Term} (\( \gamma \cdot \max(0, v_{\text{min}} - v_h) \)):
+    \begin{itemize}
+        \item Ensures minimum flow speed
+        \item Linear penalty for slow traffic
+        \item Range: [0, 60] (normalized)
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Optimization Objective}
+\begin{tcolorbox}[title=Policy Optimization]
+The goal is to find an optimal policy \( \pi^*(s_t) \) that maximizes:
+\[
+\max_\pi \mathbb{E} \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \right]
+\]
+
+Where:
+\begin{itemize}
+    \item \( \gamma = 0.95 \): Discount factor
+    \item Time horizon: 3600 steps (1-hour simulation)
+    \item Episode termination:
+    \begin{itemize}
+        \item Maximum time reached
+        \item Critical congestion (\( q_h > 100 \) vehicles/km)
+        \item Excessive waiting time (\( w_r > 300 \) seconds)
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+% 4. Q-Learning and DQN Algorithms
+\section{Q-Learning and DQN Algorithms}
+
+\subsection{Q-Learning Algorithm}
+Q-Learning is a model-free reinforcement learning algorithm that learns the optimal action-selection policy in a Markov Decision Process (MDP). The algorithm maintains a \textbf{Q-table}, where each entry \( Q(s, a) \) represents the expected cumulative reward for taking action \( a \) in state \( s \) and following the optimal policy thereafter.
+
+\subsubsection{Algorithm Description}
+\begin{tcolorbox}[title=Q-Learning Core Components]
+\begin{enumerate}
+    \item \textbf{Q-Table Initialization:}
+    \begin{itemize}
+        \item Initialize Q(s,a) arbitrarily for all state-action pairs
+        \item Common initialization: zeros or small random values
+    \end{itemize}
+
+    \item \textbf{Action Selection ($\epsilon$-greedy):}
+    \begin{itemize}
+        \item With probability $\epsilon$: select random action (exploration)
+        \item With probability $1-\epsilon$: select $a = \arg\max_a Q(s,a)$ (exploitation)
+    \end{itemize}
+
+    \item \textbf{Q-Value Update Rule:}
+    The Q-values are updated iteratively using the Bellman equation:
+    \[
+    Q(s, a) \gets Q(s, a) + \alpha \left[ r + \gamma \max_a Q(s', a) - Q(s, a) \right]
+    \]
+    where:
+    \begin{itemize}
+        \item \( \alpha \): Learning rate (0.1 in our implementation)
+        \item \( \gamma \): Discount factor (0.95 in our implementation)
+        \item \( r \): Immediate reward
+        \item \( s' \): Next state
+        \item \( \max_a Q(s', a) \): Maximum future Q-value
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+\subsubsection{Implementation Details}
+\begin{tcolorbox}[title=Q-Learning Implementation]
+\begin{itemize}
+    \item \textbf{State Discretization:}
+    \begin{itemize}
+        \item Traffic density: 3 levels (low, medium, high)
+        \item Average speed: 3 levels (slow, medium, fast)
+        \item Queue length: 3 levels (short, medium, long)
+        \item Results in 27 possible states (3×3×3)
+    \end{itemize}
+
+    \item \textbf{Action Space:}
+    \begin{itemize}
+        \item Binary actions: \{0: Red light, 1: Green light\}
+        \item Q-table dimensions: 27×2 (states × actions)
+    \end{itemize}
+
+    \item \textbf{Exploration Strategy:}
+    \begin{itemize}
+        \item Initial $\epsilon = 1.0$ (pure exploration)
+        \item Decay rate = 0.995 per step
+        \item Minimum $\epsilon = 0.01$
+        \item Ensures thorough state-space exploration
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Deep Q-Network (DQN) Algorithm}
+DQN extends Q-Learning by using a neural network to approximate the Q-function, making it suitable for problems with large or continuous state spaces. The Q-function is represented by a neural network \( Q_\theta(s, a) \), where \( \theta \) are the network parameters.
+
+\subsubsection{Key Innovations}
+\begin{tcolorbox}[title=DQN Improvements over Q-Learning]
+\begin{enumerate}
+    \item \textbf{Experience Replay Buffer:}
+    \begin{itemize}
+        \item Stores transitions $(s, a, r, s')$
+        \item Buffer size: 10,000 experiences
+        \item Randomly samples minibatches of size 64
+        \item Breaks correlations in sequential data
+        \item Improves sample efficiency
+    \end{itemize}
+
+    \item \textbf{Target Network:}
+    \begin{itemize}
+        \item Separate network $Q_{\theta'}$ for computing targets
+        \item Updated every 1,000 steps
+        \item Stabilizes training by reducing moving target problem
+        \item Parameters copied from main network
+    \end{itemize}
+
+    \item \textbf{Loss Function:}
+    \[
+    \mathcal{L}(\theta) = \mathbb{E} \left[ \left( r + \gamma \max_a Q_{\theta'}(s', a) - Q_\theta(s, a) \right)^2 \right]
+    \]
+\end{enumerate}
+\end{tcolorbox}
+
+\subsubsection{Neural Network Architecture}
+\begin{tcolorbox}[title=DQN Network Architecture]
+\begin{itemize}
+    \item \textbf{Input Layer:}
+    \begin{itemize}
+        \item 6 neurons (state dimensions)
+        \item Normalized state inputs
+    \end{itemize}
+
+    \item \textbf{Hidden Layers:}
+    \begin{itemize}
+        \item FC1: 64 units with ReLU
+        \item Batch Normalization
+        \item Dropout (0.2)
+        \item FC2: 64 units with ReLU
+        \item Batch Normalization
+        \item Dropout (0.2)
+    \end{itemize}
+
+    \item \textbf{Output Layer:}
+    \begin{itemize}
+        \item 2 neurons (Q-values for each action)
+        \item Linear activation
+    \end{itemize}
+\end{tcolorbox}
+
+\subsubsection{Training Process}
+\begin{tcolorbox}[title=DQN Training Workflow]
+\begin{enumerate}
+    \item \textbf{State Processing:}
+    \begin{itemize}
+        \item Normalize state values to [0,1]
+        \item Convert to PyTorch tensors
+    \end{itemize}
+
+    \item \textbf{Action Selection:}
+    \begin{itemize}
+        \item $\epsilon$-greedy strategy
+        \item Decaying exploration rate
+        \item Action selection based on Q-values
+    \end{itemize}
+
+    \item \textbf{Learning Update:}
+    \begin{itemize}
+        \item Sample minibatch from replay buffer
+        \item Compute target Q-values
+        \item Update network parameters using Adam
+        \item Periodically update target network
+    \end{itemize}
+
+    \item \textbf{Optimization Details:}
+    \begin{itemize}
+        \item Learning rate: 0.001
+        \item Gradient clipping: [-1, 1]
+        \item L2 regularization: 0.01
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+% 5. Implementation Details
+\section{Implementation Details}
+
+\subsection{Project Structure}
+\begin{lstlisting}[language=bash]
+RL-Project/
+├── code/
+│   ├── training/
+│   │   ├── qlearning.py        # Q-Learning implementation
+│   │   └── dqn.py             # Deep Q-Network implementation
+│   └── utils/
+│       └── env.py             # SUMO environment wrapper
+├── config/
+│   ├── highway.net.xml        # Highway network definition
+│   └── highway.rou.xml        # Traffic route definition
+└── models/
+    ├── dqn_model.pth         # Trained DQN model weights
+    └── qlearning_table.pkl   # Q-Learning table
+\end{lstlisting}
+
+\subsection{Core Dependencies}
+\begin{tcolorbox}[title=Required Packages]
+\begin{itemize}
+    \item \textbf{torch} $\geq$ 1.9.0: Deep Learning framework for DQN implementation
+    \item \textbf{numpy} $\geq$ 1.19.5: Numerical computations and array operations
+    \item \textbf{sumo} $\geq$ 1.8.0: Traffic simulation environment
+    \item \textbf{matplotlib} $\geq$ 3.3.4: Visualization of training results
+    \item \textbf{pickle}: Model serialization and deserialization
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Model Parameters}
+\subsubsection{Q-Learning Configuration}
+\begin{tcolorbox}[title=Q-Learning Parameters]
+\begin{itemize}
+    \item \textbf{Learning rate ($\alpha$)}: 0.1
+    \begin{itemize}
+        \item Controls how much new information overrides old Q-values
+        \item Chosen to balance learning speed and stability
+    \end{itemize}
+    \item \textbf{Discount factor ($\gamma$)}: 0.95
+    \begin{itemize}
+        \item Balances immediate vs. future rewards
+        \item Higher value emphasizes long-term planning
+    \end{itemize}
+    \item \textbf{Exploration rate ($\epsilon$)}: 
+    \begin{itemize}
+        \item Initial value: 1.0 (pure exploration)
+        \item Minimum value: 0.01
+        \item Decay rate: 0.995 per step
+    \end{itemize}
+    \item \textbf{State discretization}: 6 dimensions
+    \begin{itemize}
+        \item Traffic density (3 levels)
+        \item Average speed (3 levels)
+        \item Queue length (3 levels)
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\subsubsection{DQN Architecture and Parameters}
+\begin{tcolorbox}[title=DQN Configuration]
+\begin{itemize}
+    \item \textbf{Neural Network Architecture}:
+    \begin{itemize}
+        \item Input Layer: 6 neurons (state dimensions)
+        \item Hidden Layer 1: 64 neurons with ReLU
+        \item Hidden Layer 2: 64 neurons with ReLU
+        \item Output Layer: 2 neurons (Q-values for actions)
+    \end{itemize}
+    \item \textbf{Training Parameters}:
+    \begin{itemize}
+        \item Learning rate: 0.001 (Adam optimizer)
+        \item Batch size: 64 experiences
+        \item Memory size: 10000 transitions
+        \item Target network update: Every 100 steps
+        \item Exploration decay: 0.995
+    \end{itemize}
+    \item \textbf{Experience Replay}:
+    \begin{itemize}
+        \item Buffer size: 10000 transitions
+        \item Sampling strategy: Uniform random
+        \item Batch composition: (state, action, reward, next_state)
+    \end{itemize}
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Training Process}
+\begin{tcolorbox}[title=Training Workflow]
+\begin{enumerate}
+    \item \textbf{Environment Initialization}:
+    \begin{itemize}
+        \item Setup SUMO simulation
+        \item Configure traffic parameters
+        \item Initialize state variables
+    \end{itemize}
+    
+    \item \textbf{Training Loop}:
+    \begin{itemize}
+        \item Episodes: 100 training episodes
+        \item Steps per episode: 3600 (1 hour simulation)
+        \item State observation and preprocessing
+        \item Action selection using $\epsilon$-greedy policy
+        \item Environment interaction and reward collection
+        \item Model updates (Q-table or DQN)
+    \end{itemize}
+    
+    \item \textbf{Model Evaluation}:
+    \begin{itemize}
+        \item Periodic performance assessment
+        \item Metrics tracking and visualization
+        \item Model checkpointing
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Execution Instructions}
+\begin{tcolorbox}[title=Running the Project]
+\subsubsection{Training New Models}
+\begin{lstlisting}[language=bash]
+# Train both models
+python train_and_evaluate.py
+
+# Parameters in train_and_evaluate.py:
+# - EPISODES: Number of training episodes
+# - MAX_STEPS: Maximum steps per episode
+\end{lstlisting}
+
+\subsubsection{Running Trained Models}
+\begin{lstlisting}[language=bash]
+# Run DQN model
+python run_trained_model.py --model dqn
+
+# Run Q-Learning model
+python run_trained_model.py --model qlearning
+
+# Optional parameters:
+# --simulation_time: Duration (default: 3600)
+# --delay: Visualization delay (default: 0.1s)
+\end{lstlisting}
+\end{tcolorbox}
+
+% 6. Results and Analysis
+\section{Results and Analysis}
+
+\subsection{Training Performance}
+\begin{itemize}
+    \item Q-Learning showed stable learning but limited scalability
+    \item DQN demonstrated better generalization in continuous state spaces
+\end{itemize}
+
+\subsection{Real-time Metrics}
+\begin{itemize}
+    \item Average vehicle speed
+    \item Waiting times at ramps
+    \item Number of vehicles served
+    \item Cumulative rewards
+\end{itemize}
+
+% 7. Future Improvements
+\section{Future Improvements}
+\begin{enumerate}
+    \item Implement Prioritized Experience Replay
+    \item Add A3C algorithm implementation
+    \item Include more complex traffic scenarios
+    \item Optimize hyperparameters
+    \item Add multi-ramp coordination
+\end{enumerate}
+
+\end{document}

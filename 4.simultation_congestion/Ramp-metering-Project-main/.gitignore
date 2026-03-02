@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# SUMO
+*.sumo.cfg
+*.sumo.tr
+*.xml.gz
+
+# Model files
+*.pth
+*.pkl
+!dqn_model.pth
+!qlearning_table.pkl
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# LaTeX
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Project-specific
+training_results/
+temp/
+logs/

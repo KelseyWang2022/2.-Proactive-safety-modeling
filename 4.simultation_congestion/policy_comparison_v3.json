@@ -1,0 +1,92 @@
+{
+  "no_control": {
+    "avg_bottleneck_speed": {
+      "mean": 12.06548982489775,
+      "std": 0.0
+    },
+    "avg_mainline_speed": {
+      "mean": 8.316055832970283,
+      "std": 0.0
+    },
+    "avg_ramp_queue": {
+      "mean": 0.22361111111111112,
+      "std": 0.0
+    },
+    "avg_throughput": {
+      "mean": 363.13466649707397,
+      "std": 0.0
+    },
+    "total_reward": {
+      "mean": 115.1281681535389,
+      "std": 0.0
+    },
+    "total_tts": {
+      "mean": 21655.0,
+      "std": 0.0
+    },
+    "avg_metering_rate": {
+      "mean": 1200.0,
+      "std": 0.0
+    }
+  },
+  "fixed": {
+    "avg_bottleneck_speed": {
+      "mean": 12.25980086944534,
+      "std": 0.0
+    },
+    "avg_mainline_speed": {
+      "mean": 10.683336350166535,
+      "std": 0.0
+    },
+    "avg_ramp_queue": {
+      "mean": 0.9930555555555556,
+      "std": 0.0
+    },
+    "avg_throughput": {
+      "mean": 365.2911014796204,
+      "std": 0.0
+    },
+    "total_reward": {
+      "mean": 689.2483502606749,
+      "std": 0.0
+    },
+    "total_tts": {
+      "mean": 59548.0,
+      "std": 0.0
+    },
+    "avg_metering_rate": {
+      "mean": 600.0,
+      "std": 0.0
+    }
+  },
+  "ppo": {
+    "avg_bottleneck_speed": {
+      "mean": 10.996210676259215,
+      "std": 0.0
+    },
+    "avg_mainline_speed": {
+      "mean": 7.381601013166867,
+      "std": 0.0
+    },
+    "avg_ramp_queue": {
+      "mean": 0.20277777777777778,
+      "std": 0.0
+    },
+    "avg_throughput": {
+      "mean": 346.0541341570548,
+      "std": 0.0
+    },
+    "total_reward": {
+      "mean": 77.43172101632939,
+      "std": 0.0
+    },
+    "total_tts": {
+      "mean": 37684.0,
+      "std": 0.0
+    },
+    "avg_metering_rate": {
+      "mean": 1200.0,
+      "std": 0.0
+    }
+  }
+}

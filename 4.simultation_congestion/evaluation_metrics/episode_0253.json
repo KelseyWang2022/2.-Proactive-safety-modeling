@@ -1,0 +1,26 @@
+{
+  "avg_reward": 1.0175590608805591,
+  "max_reward": 2.2400043401744307,
+  "min_reward": 0.563328409753774,
+  "avg_mainline_speed": 11.874951207586957,
+  "max_mainline_speed": 21.36013020523292,
+  "min_mainline_speed": 7.490216311388706,
+  "avg_bottleneck_speed": 13.03154707921988,
+  "max_bottleneck_speed": 30.56,
+  "min_bottleneck_speed": 7.15541435681942,
+  "avg_ramp_queue": 2.4875,
+  "max_ramp_queue": 11.0,
+  "min_ramp_queue": 0.0,
+  "avg_throughput": 352.20703764575825,
+  "max_throughput": 427.2731904844537,
+  "min_throughput": 74.72771772684649,
+  "avg_occupancy": 0.09623051620262212,
+  "max_occupancy": 0.14096294534163217,
+  "min_occupancy": 0.03109015335661296,
+  "avg_metering_rate": 892.6545498892665,
+  "max_metering_rate": 3239.9999141693115,
+  "min_metering_rate": 360.00000536441803,
+  "total_reward": 244.21417461133422,
+  "episode_steps": 240
+}": 240
+}
