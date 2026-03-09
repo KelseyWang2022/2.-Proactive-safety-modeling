@@ -35,13 +35,6 @@ plt.figure(figsize=(10, 6))
 plt.plot(x_vals, ecdf_vals, label='Empirical CDF', color='blue')
 plt.plot(x_vals, theoretical_vals, label='Theoretical CDF (GPD)', color='red')
 
-# 🔥 计算TTC=0.5s对应的excess和概率
-# lttb_target = 1.5
-# excess_target = threshold - lttb_target
-# prob_target = genpareto.cdf(excess_target, c, loc=loc, scale=scale)
-# plt.scatter([excess_target], [prob_target], color='green', s=100, marker='o', label=f'Excess={excess_target:.2f}, P={prob_target:.3f}')
-# plt.text(excess_target, prob_target, f'  TTC=0.5s\n  P={prob_target:.3f}', fontsize=10, ha='left', va='bottom', color='green')
-
 plt.title('Empirical CDF vs Theoretical CDF (GPD)')
 plt.xlabel('Excesses (Threshold - TTC)')
 plt.ylabel('Cumulative Probability')
