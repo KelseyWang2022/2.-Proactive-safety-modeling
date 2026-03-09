@@ -3,14 +3,14 @@ from sklearn.metrics import roc_curve, auc, confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
 
-# 1️⃣ 读取数据
+# 读取数据
 ttc_data = pd.read_csv('TTC_results.csv')
 lttb_data = pd.read_csv('merged_filtered_data(april_may_june).csv')
 
-# 2️⃣ 合并数据（假设两者列结构相同：'TTC', 'LTTB', 'crash'）
+# 合并数据（假设两者列结构相同：'TTC', 'LTTB', 'crash'）
 data = pd.concat([ttc_data[['TTC', 'LTTB', 'crash']], lttb_data[['TTC', 'LTTB', 'crash']]], ignore_index=True)
 
-# 3️⃣ 绘制 ROC 曲线和计算 AUC
+# 绘制 ROC 曲线和计算 AUC
 def plot_roc_and_metrics(data, feature):
     y_true = data['crash']
     y_scores = data[feature]
@@ -38,7 +38,7 @@ plt.show()
 
 print(f'\nAUC Comparison: LTTB = {auc_lttb:.3f}, TTC = {auc_ttc:.3f}')
 
-# 4️⃣ 在不同阈值下计算灵敏度、特异性、Youden指数，并绘制曲线
+#  在不同阈值下计算灵敏度、特异性、Youden指数，并绘制曲线
 def plot_extended_metrics_and_youden(data, feature, thresholds=np.arange(0.5, 3.5, 0.5)):
     y_true = data['crash']
     y_scores = data[feature]
